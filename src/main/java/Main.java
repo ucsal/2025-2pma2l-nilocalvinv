@@ -11,8 +11,9 @@ public class Main {
 
         SavingsAccount savings = new SavingsAccount();
         savings.deposit(100);
-        // Estado inicial: irá lançar UnsupportedOperationException (ilustra o problema LSP).
-        new BankService().processWithdrawal(savings, 30);
-        System.out.println("Savings balance: " + savings.getBalance());
+        
+        // Não chamamos processWithdrawal com SavingsAccount — respeitando o contrato
+        // Nenhuma exceção é lançada
+        System.out.println("Savings balance: " + savings.getBalance()); // 100.0
     }
 }
